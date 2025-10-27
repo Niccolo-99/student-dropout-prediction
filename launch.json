@@ -1,0 +1,232 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+        {
+        "name": "BaseHP_supervised_all_datasets_d64",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0" },
+        "args": [
+            "--is_training","1",
+            "--model_id","BaseHP_sup_all_datasets_d64",
+            "--model","UniTS",
+            "--lradj","supervised",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--d_model","64",
+            "--learning_rate","1e-4","--weight_decay","5e-6",
+            "--train_epochs","20",
+            "--batch_size","32","--acc_it","1",
+            "--clip_grad","100",
+            "--task_data_config_path","data_provider/multi_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "BaseHP_supervised_only_dropout_d64",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0" },
+        "args": [
+            "--is_training","1",
+            "--model_id","BaseHP_sup_only_dropout_d64",
+            "--model","UniTS",
+            "--lradj","supervised",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--d_model","64",
+            "--learning_rate","1e-4","--weight_decay","5e-6",
+            "--train_epochs","20",
+            "--batch_size","32","--acc_it","1",
+            "--clip_grad","100",
+            "--task_data_config_path","data_provider/only_dropout_datasets_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Ptune_pretrain_all_datasets_d128",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD":"1" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Ptune_pretrain_all_d128",
+            "--model","UniTS",
+            "--d_model","128",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--batch_size","32",
+            "--lradj","prompt_tuning",
+            "--prompt_tune_epoch","2",
+            "--train_epochs","0",
+            "--learning_rate","3e-3",
+            "--clip_grad","100",
+            "--pretrained_weight","checkpoints/units_x128_pretrain_checkpoint.pth",
+            "--task_data_config_path","data_provider/multi_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Ptune_pretrain_only_dropout_d128",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD":"1" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Ptune_pretrain_dropout_d128",
+            "--model","UniTS",
+            "--d_model","128",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--batch_size","32",
+            "--lradj","prompt_tuning",
+            "--prompt_tune_epoch","2",
+            "--train_epochs","0",
+            "--learning_rate","3e-3",
+            "--clip_grad","100",
+            "--pretrained_weight","checkpoints/units_x128_pretrain_checkpoint.pth",
+            "--task_data_config_path","data_provider/only_dropout_datasets_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Ptune_supervised_all_d64",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD":"1" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Ptune_sup_all_d64",
+            "--model","UniTS",
+            "--d_model","64",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--batch_size","32",
+            "--lradj","prompt_tuning",
+            "--prompt_tune_epoch","2",
+            "--train_epochs","0",
+            "--learning_rate","3e-3",
+            "--clip_grad","100",
+            "--pretrained_weight","checkpoints/units_x64_supervised_checkpoint.pth",
+            "--task_data_config_path","data_provider/multi_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Ptune_supervised_only_dropout_d64",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD":"1" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Ptune_sup_dropout_d64",
+            "--model","UniTS",
+            "--d_model","64",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--batch_size","32",
+            "--lradj","prompt_tuning",
+            "--prompt_tune_epoch","2",
+            "--train_epochs","0",
+            "--learning_rate","3e-3",
+            "--clip_grad","100",
+            "--pretrained_weight","checkpoints/units_x64_supervised_checkpoint.pth",
+            "--task_data_config_path","data_provider/only_dropout_datasets_task.yaml",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Finetune_sup_all_d64_5ep",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Finetune_sup_all_d64_5ep",
+            "--model","UniTS",
+            "--lradj","supervised",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--d_model","64",
+            "--learning_rate","5e-5","--weight_decay","5e-6",
+            "--train_epochs","5",
+            "--batch_size","32","--acc_it","1",
+            "--clip_grad","100",
+            "--task_data_config_path","data_provider/multi_task.yaml",
+            "--pretrained_weight","checkpoints/units_x64_supervised_checkpoint.pth",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Finetune_sup_dropout_d64_5ep",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0" },
+        "args": [
+            "--is_training","1",
+            "--model_id","Finetune_sup_dropout_d64_5ep",
+            "--model","UniTS",
+            "--lradj","supervised",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--d_model","64",
+            "--learning_rate","5e-5","--weight_decay","5e-6",
+            "--train_epochs","5",
+            "--batch_size","32","--acc_it","1",
+            "--clip_grad","100",
+            "--task_data_config_path","data_provider/only_dropout_datasets_task.yaml",
+            "--pretrained_weight","checkpoints/units_x64_supervised_checkpoint.pth",
+            "--debug","disabled"
+        ],
+        "justMyCode": false
+        },
+        {
+        "name": "Test_sup_d64",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/run.py",
+        "cwd": "${workspaceFolder}",
+        "env": { "CUDA_VISIBLE_DEVICES": "0", "TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD":"1" },
+        "args": [
+            "--is_training","0",
+            "--debug","disabled",
+            "--model_id","Test_sup_all_d64",
+            "--model","UniTS",
+            "--pretrained_weight","checkpoints/units_x64_supervised_checkpoint.pth",
+            "--prompt_num","10","--patch_len","16","--stride","16","--e_layers","3",
+            "--d_model","64",
+            "--batch_size","32",
+            "--task_data_config_path","data_provider/multi_task.yaml"
+        ],
+
+        "justMyCode": false
+        }
+
+    ]
+}
+
+
+
+
+
+
+
+
+
