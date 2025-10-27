@@ -1,0 +1,41 @@
+task_dataset:
+
+  CLS_Unitelma:
+    task_name: classification
+    dataset: Unitelma      
+    data: UEA
+    embed: timeF
+    root_path: dataset/Unitelma/unitelma_processed
+    seq_len: 360
+    label_len: 0
+    pred_len: 0
+    enc_in: 97                    
+    num_class: 2
+    c_out: None
+
+  CLS_KDDcup:             
+    task_name: classification
+    dataset: KDDcup       
+    data: UEA
+    embed: timeF
+    root_path: dataset\\KDDcup15\\kddcup15_processed
+    seq_len: 30
+    label_len: 0
+    pred_len: 0
+    enc_in: 7                  
+    num_class: 2
+    c_out: None
+
+
+  CLS_XuetangX:               
+    task_name: classification
+    dataset: XuetangX       
+    data: UEA
+    embed: timeF
+    root_path: dataset\\XuetangX\\XuetangX_processed
+    seq_len: 472
+    label_len: 0
+    pred_len: 0
+    enc_in: 22                   
+    num_class: 2
+    c_out: None
