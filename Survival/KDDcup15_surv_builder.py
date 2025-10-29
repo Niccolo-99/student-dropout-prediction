@@ -516,10 +516,10 @@ class KDDCup15SurvivalDataset:
         
         discretized_times, bin_edges = self.discretize_survival_times(survival_times, event_indicators)
         
-        print("\n KDDCup DROPOUT SURVIVAL ANALYSIS STATISTICS:")
-        print(f"  Total enrollments: {len(survival_times)}")
-        print(f"  DROPOUT events observed: {np.sum(event_indicators)} ({np.sum(event_indicators)/len(event_indicators)*100:.1f}%)")
-        print(f"  COMPLETIONS (censored): {np.sum(1-event_indicators)} ({np.sum(1-event_indicators)/len(event_indicators)*100:.1f}%)")
+        print("\nKDDCup DROPOUT SURVIVAL ANALYSIS STATISTICS:")
+        print(f"Total enrollments: {len(survival_times)}")
+        print(f"DROPOUT events observed: {np.sum(event_indicators)} ({np.sum(event_indicators)/len(event_indicators)*100:.1f}%)")
+        print(f"COMPLETIONS (censored): {np.sum(1-event_indicators)} ({np.sum(1-event_indicators)/len(event_indicators)*100:.1f}%)")
         if np.sum(event_indicators) > 0:
             print(f"  Average time to dropout: {np.mean(survival_times[event_indicators==1]):.1f} days")
         if np.sum(1-event_indicators) > 0:
@@ -603,3 +603,4 @@ if __name__ == "__main__":
         test_size=0.2,
         random_state=42
     )
+
