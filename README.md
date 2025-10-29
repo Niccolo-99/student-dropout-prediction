@@ -41,13 +41,13 @@ The script creates the `dataset/` folder and fills subfolders such as `dataset/e
 
 Download the raw packages from the official links:
 
-| Dataset | Link sorgente |
+| Dataset | Link |
 | ------- | ------------- |
 | XuetangX | http://moocdata.cn/data/user-activity |
 | KDDCup 2015 | http://moocdata.cn/data/user-activity |
 | Unitelma Sapienza | https://figshare.com/articles/dataset/UnitelmaSapienza_1_0_zip/14554137?file=27923373 |
 
-Organizzare gli archivi come segue all'interno di `dataset/`:
+Organize the files inside the folder as shown below:
 
 ```
 dataset/
@@ -71,7 +71,7 @@ Download original paper, code and weights from:
 - https://github.com/mims-harvard/UniTS
 - https://github.com/mims-harvard/UniTS/releases/tag/ckpt
 
-And place them in `checkpoints/` with the same names used in the Code configurations (e.g., `units_x64_supervised_checkpoint.pth`, `units_x128_pretrain_checkpoint.pth`).
+And place them in `checkpoints/` with the same names used in the YAML configurations (e.g., `units_x64_supervised_checkpoint.pth`, `units_x128_pretrain_checkpoint.pth`).
 
 ## Running experiments
 
@@ -108,8 +108,8 @@ The `launch.json` file offers preconfigured profiles for the most common scenari
 
 - **BaseHP_supervised_all_datasets_d64**: supervised training on all general multi-task datasets.
 - **BaseHP_supervised_only_dropout_d64**: supervised training on the dropout-only datasets.
-- **Ptune_pretrain_* / Ptune_supervised_***: prompt tuning starting from x128 pretrain or x64 supervised checkpoints.
-- **Finetune_sup_*_5ep**: supervised fine-tuning for a few epochs using x64 weights.
+- **Ptune_pretrain_ / Ptune_supervised_**: prompt tuning starting from x128 pretrain or x64 supervised checkpoints.
+- **Finetune_sup_5ep**: supervised fine-tuning for a few epochs using x64 weights.
 - **Test_sup_d64**: evaluation of a supervised checkpoint.
 
 Select a configuration in the Run & Debug panel of VS Code and start in Debug mode; the environment sets `CUDA_VISIBLE_DEVICES=0` and, for prompt-tuning profiles, enables `TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1` to ensure full checkpoint loading.
