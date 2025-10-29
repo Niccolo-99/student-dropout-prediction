@@ -144,7 +144,7 @@ class XuetangXSurvivalDataset:
         gap_distributions = []
         sparsity_levels = []
         
-        print("🔍 ANALYZING XUETANGX DATA CHARACTERISTICS...")
+        print("ANALYZING XUETANGX DATA CHARACTERISTICS...")
         
         for enroll_id, data in tqdm(all_trajectories.items(), desc="Analyzing trajectories"):
             timeseries = data["trajectory"].T  # (days, activities)
@@ -347,8 +347,8 @@ class XuetangXSurvivalDataset:
                 survival_times.append(completion_day)
                 event_indicators.append(0)  # Censored
         
-        print(f"  Never engaged (filtered): {never_engaged_count}")
-        print(f"  Early dropouts corrected: {early_dropout_count}")
+        print(f"Never engaged (filtered): {never_engaged_count}")
+        print(f"Early dropouts corrected: {early_dropout_count}")
         return (np.array(survival_times), np.array(event_indicators))
 
     def discretize_survival_times(self, survival_times, event_indicators):
@@ -374,7 +374,7 @@ class XuetangXSurvivalDataset:
         
         total_dropouts = np.sum(event_indicators)
         if total_dropouts > 0:
-            print(f"  Very early dropout rate: {very_early_dropouts/total_dropouts*100:.1f}% (target: <10%)")
+            print(f"Very early dropout rate: {very_early_dropouts/total_dropouts*100:.1f}% (target: <10%)")
         
         dropout_times = survival_times[event_indicators == 1]
         completion_times = survival_times[event_indicators == 0]
@@ -563,3 +563,4 @@ if __name__ == "__main__":
         test_size=0.2,
         random_state=42
     )
+
